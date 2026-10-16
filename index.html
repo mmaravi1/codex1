@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miguel's language site</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <aside>
+        <a class="brand" href="#"><span>◒</span> Miguel's language site</a>
+        <p class="tagline">A curious way to meet a new language.</p>
+        <nav>
+          <button class="nav-item active" data-view="learn">✦ Learn</button>
+          <button class="nav-item" data-view="words">▤ Word bank</button>
+          <button class="nav-item" data-view="sources">↗ Sources</button>
+        </nav>
+        <div class="streak"><span>3</span><small>day<br />streak</small></div>
+      </aside>
+      <section class="content">
+        <header>
+          <div>
+            <p class="eyebrow">YOUR EXPLORATION</p>
+            <h1 id="greeting">Good to see you.</h1>
+          </div>
+          <label class="language-picker">I want to learn
+            <select id="language"><option value="Italian">Italian</option><option value="Spanish">Spanish</option><option value="French">French</option><option value="German">German</option><option value="Japanese">Japanese</option></select>
+          </label>
+        </header>
+        <section id="learn" class="view active">
+          <div class="today-grid">
+            <article class="hero-card">
+              <p class="eyebrow">TODAY'S PHRASE <span id="level">BEGINNER</span></p>
+              <h2 id="phrase">Ciao, come stai?</h2>
+              <p class="pronunciation" id="pronunciation">chow, KOH-meh stye</p>
+              <p class="translation" id="translation">“Hi, how are you?”</p>
+              <div class="actions"><button id="speak" class="round" aria-label="Hear phrase">▶</button><button id="savePhrase" class="text-button">+ Save phrase</button></div>
+            </article>
+            <article class="mission-card">
+              <p class="eyebrow">SMALL MISSION</p>
+              <h3>Make it yours</h3>
+              <p>Say today’s phrase out loud three times. Then save it to revisit later.</p>
+              <div class="progress"><i id="progressBar"></i></div><span id="progressText">0 of 3 repetitions</span>
+              <button class="outline" id="countPractice">I said it once</button>
+            </article>
+          </div>
+          <article class="discovery-card">
+            <div><p class="eyebrow">FROM THE WEB <span id="loadingDot">●</span></p><h2 id="discoveryTitle">A little context goes a long way.</h2><p id="discoveryText">Choose a language to discover a short, current introduction from Wikipedia.</p><a id="sourceLink" target="_blank" rel="noopener">View original source ↗</a></div>
+            <div class="globe">◌</div>
+          </article>
+          <div class="section-head"><h2>Build your word bank</h2><button class="text-button" id="refreshWords">Refresh words ↻</button></div>
+          <div id="wordCards" class="word-grid"></div>
+        </section>
+        <section id="words" class="view"><div class="section-head"><h2>Saved words & phrases</h2></div><div id="savedWords" class="saved-list"></div></section>
+        <section id="sources" class="view"><h2>How Lingua Scout finds information</h2><p class="source-copy">Language context is requested directly from Wikipedia's public REST API. Word definitions are requested from DictionaryAPI.dev when available. Links always open the original source; no account or API key is required.</p><p class="source-copy">Internet content can be incomplete or imperfect. Treat it as a starting point, especially for grammar and usage.</p></section>
+      </section>
+    </main>
+    <template id="wordTemplate"><article class="word-card"><div><p class="word"></p><p class="meaning"></p><small class="source"></small></div><button class="save-word">+ Save</button></article></template>
+    <script src="app.js"></script>
+  </body>
+</html>
