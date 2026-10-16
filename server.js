@@ -11,7 +11,10 @@ http.createServer((req, res) => {
   if (!filename.startsWith(root)) { res.writeHead(403); return res.end('Forbidden'); }
   fs.readFile(filename, (err, file) => {
     if (err) { res.writeHead(404); return res.end('Not found'); }
-    res.writeHead(200, { 'Content-Type': types[path.extname(filename)] || 'application/octet-stream' });
+    res.writeHead(200, {
+      'Content-Type': types[path.extname(filename)] || 'application/octet-stream',
+      'Cache-Control': 'no-store'
+    });
     res.end(file);
   });
 }).listen(3000, () => console.log('Lingua Scout: http://localhost:3000'));
